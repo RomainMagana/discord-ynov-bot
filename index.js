@@ -96,6 +96,8 @@ bot.on('guildMemberAdd', async (member) => {
 	arr[count] = member.user.id;
 	// Voir qui l'id du user qui vient de rejoindre la guilde :
 	//console.log("ID du mec qui vient de rejoindre la guilde : " + arr[count]);
+	member.guild.channels.fetch('893952647818805278')
+		.then(message => message.send(`Bienvenue ${member.nickname} !`));
 	count++;
 	await member.send(`Salut ${member.user.username} ! Afin que je puisse te renommer correctement sur le serveur d'Ynov Sophia, peux-tu m'indiquer ton niveau d'étude \`(B1/B2/B3/M1/M2)\` suivi de ton prénom\n\`Exemple : B2 Ynovbot\``);
 })
@@ -106,7 +108,7 @@ bot.on('messageCreate', async (message) => {
 		if (message.author.id === arr[i] && message.channel.type === "DM") {
 			// Affichage de celui qui a envoyé le message :
 			//console.log("Expéditeur : " + message.author.username);
-			let regEx = /^(B1|B2|B3|M1|M2)\s([\p{Letter}]+)$/gu;
+			let regEx = /^(B1|B2|B3|M1|M2)\s([\p{Letter}\u002D]+)$/gu;
 			let fullMessage = message.content;
 			// Affichage du message envoyé par l'expéditeur :
 			console.log("Message : " + fullMessage);
