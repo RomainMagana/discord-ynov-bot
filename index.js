@@ -232,4 +232,4 @@ bot.on('messageCreate', async (message) => {
 	}
 });
 
-bot.login(process.env.TOKEN);
+bot.login('ODk1MjA1NjU3MzI0NzAzNzY1.YV1LPA.AESr1Md3jGZbit5w_Pjfm0-YHYg');
