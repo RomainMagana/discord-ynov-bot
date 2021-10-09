@@ -97,7 +97,7 @@ bot.on('guildMemberAdd', async (member) => {
 	// Voir qui l'id du user qui vient de rejoindre la guilde :
 	//console.log("ID du mec qui vient de rejoindre la guilde : " + arr[count]);
 	member.guild.channels.fetch('893952647818805278')
-		.then(message => message.send(`Bienvenue ${member.nickname} !`));
+		.then(message => message.send(`Bienvenue ${member.user.name} !`));
 	count++;
 	await member.send(`Salut ${member.user.username} ! Afin que je puisse te renommer correctement sur le serveur d'Ynov Sophia, peux-tu m'indiquer ton niveau d'étude \`(B1/B2/B3/M1/M2)\` suivi de ton prénom\n\`Exemple : B2 Ynovbot\``);
 })
