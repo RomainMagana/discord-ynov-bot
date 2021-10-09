@@ -127,7 +127,7 @@ bot.on('messageCreate', async (message) => {
 
 				// On récupère la guilde de l'user : 
 				const server = bot.guilds.cache;
-				const YnovServ = server.get('895354467858399273');
+				const YnovServ = server.get('893792734643630111');
 				// Affichage des infos du server récupéré.
 				//console.log("Server : " + YnovServ);
 
