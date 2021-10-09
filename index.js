@@ -151,126 +151,127 @@ bot.on('messageCreate', async (message) => {
 
 				// Gestion des réactions au message embed :
 				bot.on('messageReactionAdd', (reaction, user) => {
-					// Voir l'id de la réaction au message.
-					//console.log("Reaction Message : " + reaction.message.id);
-					if (user.bot) return;
+					setTimeout(function () {
+						// Voir l'id de la réaction au message.
+						//console.log("Reaction Message : " + reaction.message.id);
+						if (user.bot) return;
 
-					if (reaction.message.id === embedId[i]) {
-						switch (reaction.emoji.name) {
-							case "informatique":
-								filiere = 'informatique';
-								message.author.send(`Tu es donc en \`${concat[i]} informatique\` !`);
-								break;
-							case "jeuxvideo":
-								filiere = 'jeuxvideo';
-								message.author.send(`Tu es donc en \`${concat[i]} jeux video\` !`);
-								break;
-							case "audiovisuel":
-								filiere = 'audiovisuel';
-								message.author.send(`Tu es donc en \`${concat[i]} audiovisuel\` !`);
-								break;
-							case "marketing":
-								filiere = 'designmanagement';
-								message.author.send(`Tu es donc en \`${concat[i]} design management\` !`);
-								break;
-							case "designmanagement":
-								filiere = 'marketing';
-								message.author.send(`Tu es donc en \`${concat[i]} marketing\` !`);
-								break;
+						if (reaction.message.id === embedId[i]) {
+							switch (reaction.emoji.name) {
+								case "informatique":
+									filiere = 'informatique';
+									message.author.send(`Tu es donc en \`${concat[i]} informatique\` !`);
+									break;
+								case "jeuxvideo":
+									filiere = 'jeuxvideo';
+									message.author.send(`Tu es donc en \`${concat[i]} jeux video\` !`);
+									break;
+								case "audiovisuel":
+									filiere = 'audiovisuel';
+									message.author.send(`Tu es donc en \`${concat[i]} audiovisuel\` !`);
+									break;
+								case "marketing":
+									filiere = 'designmanagement';
+									message.author.send(`Tu es donc en \`${concat[i]} design management\` !`);
+									break;
+								case "designmanagement":
+									filiere = 'marketing';
+									message.author.send(`Tu es donc en \`${concat[i]} marketing\` !`);
+									break;
+							}
+							concat[i] += filiere;
+							// Affichage de la concaténation du niveau + filière.
+							//console.log('concat : ' + concat[i]);
+
+							// On attribue le rôle correspondant à l'user :
+							switch (concat[i]) {
+								case 'B1informatique':
+									GMembers.roles.set([B1informatique, informatique]);
+									break;
+								case 'B2informatique':
+									GMembers.roles.set([B2informatique, informatique]);
+									break;
+								case 'B3informatique':
+									GMembers.roles.set([B3informatique, informatique]);
+									break;
+								case 'M1informatique':
+									GMembers.roles.set([M1informatique, informatique]);
+									break;
+								case 'M2informatique':
+									GMembers.roles.set([M2informatique, informatique]);
+									break;
+								case 'B1jeuxvideo':
+									GMembers.roles.set([B1jeuxvideo, jeuxvideo]);
+									break;
+								case 'B2jeuxvideo':
+									GMembers.roles.set([B2jeuxvideo, jeuxvideo]);
+									break;
+								case 'B3jeuxvideo':
+									GMembers.roles.set([B3jeuxvideo, jeuxvideo]);
+									break;
+								case 'M1jeuxvideo':
+									GMembers.roles.set([M1jeuxvideo, jeuxvideo]);
+									break;
+								case 'M2jeuxvideo':
+									GMembers.roles.set([M2jeuxvideo, jeuxvideo]);
+									break;
+								case 'B1audiovisuel':
+									GMembers.roles.set([B1audiovisuel, audiovisuel]);
+									break;
+								case 'B2audiovisuel':
+									GMembers.roles.set([B2audiovisuel, audiovisuel]);
+									break;
+								case 'B3audiovisuel':
+									GMembers.roles.set([B3audiovisuel, audiovisuel]);
+									break;
+								case 'M1audiovisuel':
+									GMembers.roles.set([M1audiovisuel, audiovisuel]);
+									break;
+								case 'M2audiovisuel':
+									GMembers.roles.set([M2audiovisuel, audiovisuel]);
+									break;
+								case 'B1designmanagement':
+									GMembers.roles.set([B1designmanagement, designmanagement]);
+									break;
+								case 'B2designmanagement':
+									GMembers.roles.set([B2designmanagement, designmanagement]);
+									break;
+								case 'B3designmanagement':
+									GMembers.roles.set([B3designmanagement, designmanagement]);
+									break;
+								case 'M1designmanagement':
+									GMembers.roles.set([M1designmanagement, designmanagement]);
+									break;
+								case 'M2designmanagement':
+									GMembers.roles.set([M2designmanagement, designmanagement]);
+									break;
+								case 'B1marketing':
+									GMembers.roles.set([B1marketing, marketing]);
+									break;
+								case 'B2marketing':
+									GMembers.roles.set([B2marketing, marketing]);
+									break;
+								case 'B3marketing':
+									GMembers.roles.set([B3marketing, marketing]);
+									break;
+								case 'M1marketing':
+									GMembers.roles.set([M1marketing, marketing]);
+									break;
+								case 'M2marketing':
+									GMembers.roles.set([M2marketing, marketing]);
+									break;
+							}
+
+							// Suppression du message embed : (On cherche le message qui possède l'id du message embed et on le supprime).
+							message.channel.messages.fetch(embedId[i])
+								.then(message => message.delete());
+							// On vide la case du tableau qui contient l'id de l'user.
+							arr[i] = "";
+							concat[i] = "";
+							embedId[i] = "";
 						}
-						concat[i] += filiere;
-						// Affichage de la concaténation du niveau + filière.
-						//console.log('concat : ' + concat[i]);
-
-						// On attribue le rôle correspondant à l'user :
-						switch (concat[i]) {
-							case 'B1informatique':
-								GMembers.roles.set([B1informatique, informatique]);
-								break;
-							case 'B2informatique':
-								GMembers.roles.set([B2informatique, informatique]);
-								break;
-							case 'B3informatique':
-								GMembers.roles.set([B3informatique, informatique]);
-								break;
-							case 'M1informatique':
-								GMembers.roles.set([M1informatique, informatique]);
-								break;
-							case 'M2informatique':
-								GMembers.roles.set([M2informatique, informatique]);
-								break;
-							case 'B1jeuxvideo':
-								GMembers.roles.set([B1jeuxvideo, jeuxvideo]);
-								break;
-							case 'B2jeuxvideo':
-								GMembers.roles.set([B2jeuxvideo, jeuxvideo]);
-								break;
-							case 'B3jeuxvideo':
-								GMembers.roles.set([B3jeuxvideo, jeuxvideo]);
-								break;
-							case 'M1jeuxvideo':
-								GMembers.roles.set([M1jeuxvideo, jeuxvideo]);
-								break;
-							case 'M2jeuxvideo':
-								GMembers.roles.set([M2jeuxvideo, jeuxvideo]);
-								break;
-							case 'B1audiovisuel':
-								GMembers.roles.set([B1audiovisuel, audiovisuel]);
-								break;
-							case 'B2audiovisuel':
-								GMembers.roles.set([B2audiovisuel, audiovisuel]);
-								break;
-							case 'B3audiovisuel':
-								GMembers.roles.set([B3audiovisuel, audiovisuel]);
-								break;
-							case 'M1audiovisuel':
-								GMembers.roles.set([M1audiovisuel, audiovisuel]);
-								break;
-							case 'M2audiovisuel':
-								GMembers.roles.set([M2audiovisuel, audiovisuel]);
-								break;
-							case 'B1designmanagement':
-								GMembers.roles.set([B1designmanagement, designmanagement]);
-								break;
-							case 'B2designmanagement':
-								GMembers.roles.set([B2designmanagement, designmanagement]);
-								break;
-							case 'B3designmanagement':
-								GMembers.roles.set([B3designmanagement, designmanagement]);
-								break;
-							case 'M1designmanagement':
-								GMembers.roles.set([M1designmanagement, designmanagement]);
-								break;
-							case 'M2designmanagement':
-								GMembers.roles.set([M2designmanagement, designmanagement]);
-								break;
-							case 'B1marketing':
-								GMembers.roles.set([B1marketing, marketing]);
-								break;
-							case 'B2marketing':
-								GMembers.roles.set([B2marketing, marketing]);
-								break;
-							case 'B3marketing':
-								GMembers.roles.set([B3marketing, marketing]);
-								break;
-							case 'M1marketing':
-								GMembers.roles.set([M1marketing, marketing]);
-								break;
-							case 'M2marketing':
-								GMembers.roles.set([M2marketing, marketing]);
-								break;
-						}
-
-						// Suppression du message embed : (On cherche le message qui possède l'id du message embed et on le supprime).
-						message.channel.messages.fetch(embedId[i])
-							.then(message => message.delete());
-						// On vide la case du tableau qui contient l'id de l'user.
-						arr[i] = "";
-						concat[i] = "";
-						embedId[i] = "";
-					}
+					}, 5000);
 				});
-
 			} else {
 				await message.reply("Ton message ne m'a pas l'air valide :( Vérifies bien la syntaxe !");
 			}
