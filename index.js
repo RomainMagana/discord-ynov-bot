@@ -109,13 +109,12 @@ bot.on('messageCreate', async (message) => {
 			let regEx = /^(B1|B2|B3|M1|M2)\s([\p{Letter}]+)$/gu;
 			let fullMessage = message.content;
 			// Affichage du message envoyé par l'expéditeur :
-			//console.log("Message : " + fullMessage);
+			console.log("Message : " + fullMessage);
 			let found = fullMessage.match(regEx);
 			if (found != null && found[0].length < 21) {
 				// Affichage du match avec le regex :
 				//console.log("Regex : " + found[0]);
 				await message.reply(`Ok ! Tu t'appelleras donc : ${found[0]}.`);
-				console.log("Nom_utilisateur : " + found[0]);
 				let sent_message = await message.author.send({
 					embeds: [embed]
 				}).then(embedMessage => {
@@ -153,7 +152,7 @@ bot.on('messageCreate', async (message) => {
 				// Gestion des réactions au message embed :
 				bot.on('messageReactionAdd', (reaction, user) => {
 					// Voir l'id de la réaction au message.
-					console.log("Reaction Message : " + reaction.message.id);
+					//console.log("Reaction Message : " + reaction.message.id);
 					if (user.bot) return;
 
 					if (reaction.message.id === embedId[i]) {
@@ -266,8 +265,9 @@ bot.on('messageCreate', async (message) => {
 						message.channel.messages.fetch(embedId[i])
 							.then(message => message.delete());
 						// On vide la case du tableau qui contient l'id de l'user.
-						arr[i] = " ";
-						concat[i] = " ";
+						arr[i] = "";
+						concat[i] = "";
+						embedId[i] = "";
 					}
 				});
 
