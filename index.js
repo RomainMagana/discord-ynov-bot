@@ -102,7 +102,7 @@ bot.on('messageCreate', async (message) => {
 		if (message.author.id === arr[i] && message.channel.type === "DM") {
 			// Affichage de celui qui a envoyé le message :
 			//console.log("Expéditeur : " + message.author.username);
-			let regEx = /^(B1|B2|B3|M1|M2)\s\b([A-zÀ-ú]+)\b$/gi;
+			let regEx = /^(B1|B2|B3|M1|M2)\s\b([a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]+)$/gi;
 			let fullMessage = message.content;
 			// Affichage du message envoyé par l'expéditeur :
 			//console.log("Message : " + fullMessage);
