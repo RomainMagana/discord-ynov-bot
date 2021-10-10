@@ -71,6 +71,7 @@ const M2marketing = "895832949814095933"
 
 const marketing = "893953932710252544"
 
+const command = "./welcome.js"
 
 
 // Je créé mon embed, lui donne son titre, couleur, author, description
@@ -88,7 +89,6 @@ const embed = new MessageEmbed()
 
 bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}!`);
-
 });
 
 // On attend qu'un user rejoigne le serveur, on stock son id dans un tableau et on lui envoie un message.
@@ -280,5 +280,13 @@ bot.on('messageCreate', async (message) => {
 		}
 	}
 });
+
+module.exports = (bot) => {
+	bot.on('messageCreate', (message) => {
+		switch (message.content) {
+			case "!campusid" : message.reply("C\'est ça le pb");break;
+		}
+	})
+};
 
 bot.login(process.env.TOKEN);
