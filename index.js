@@ -281,12 +281,10 @@ bot.on('messageCreate', async (message) => {
 	}
 });
 
-module.exports = (bot) => {
-	bot.on('messageCreate', (message) => {
-		switch (message.content) {
-			case "!campusid" : message.reply("C\'est ça le pb");break;
-		}
-	})
-};
+bot.on('messageCreate', (message) => {
+	switch (message.content) {
+		case "!campusid" : message.reply("C\'est ça le pb");break;		
+	}
+})
 
 bot.login(process.env.TOKEN);
