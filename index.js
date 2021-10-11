@@ -71,15 +71,6 @@ const M2marketing = "895832949814095933"
 
 const marketing = "893953932710252544"
 
-//managment
-const B1marketing = "893807132854591538"
-const B2marketing = "895832822252711938"
-const B3marketing = "895832884542308373"
-const M1marketing = "895832914204450887"
-const M2marketing = "895832949814095933"
-
-const marketing = "893953932710252544"
-
 //WebManagement
 const B1webmanagment = "897056203153240105"
 const B2webmanagment = "897056331167592468"
