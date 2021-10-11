@@ -71,7 +71,20 @@ const M2marketing = "895832949814095933"
 
 const marketing = "893953932710252544"
 
-const command = "./welcome.js"
+//managment
+const B1marketing = "893807132854591538"
+const B2marketing = "895832822252711938"
+const B3marketing = "895832884542308373"
+const M1marketing = "895832914204450887"
+const M2marketing = "895832949814095933"
+
+const marketing = "893953932710252544"
+
+//WebManagement
+const B1webmanagment = "897056203153240105"
+const B2webmanagment = "897056331167592468"
+
+const webmanagement = "897055860579242004"
 
 
 // Je créé mon embed, lui donne son titre, couleur, author, description
@@ -126,6 +139,7 @@ bot.on('messageCreate', async (message) => {
 					embedMessage.react("<:audiovisuel:895797291426934784>");
 					embedMessage.react("<:designmanagement:895797291221409813>");
 					embedMessage.react("<:marketing:895797291460468736>");
+					embedMessage.react("<:designmarketing:897057354342862849>");
 					return embedMessage;
 				});
 
@@ -180,6 +194,9 @@ bot.on('messageCreate', async (message) => {
 									filiere = 'marketing';
 									message.author.send(`Tu es donc en \`${concat[i]} marketing\` !`);
 									break;
+								case "designmarketing":
+									filiere = 'webmanagement';
+									message.author.send(`Tu es donc en \`${concat[i]} web management\` !`)
 							}
 							concat[i] += filiere;
 							// Affichage de la concaténation du niveau + filière.
@@ -262,6 +279,12 @@ bot.on('messageCreate', async (message) => {
 								case 'M2marketing':
 									GMembers.roles.set([M2marketing, marketing]);
 									break;
+								case 'B1webmanagement':
+									GMembers.roles.set([B1webmanagment, webmanagement]);
+									break;
+								case 'B2webmanagement':
+									GMembers.roles.set([B2webmanagment, webmanagement]);
+									break;
 							}
 
 							// Suppression du message embed : (On cherche le message qui possède l'id du message embed et on le supprime).
@@ -281,10 +304,14 @@ bot.on('messageCreate', async (message) => {
 	}
 });
 
-bot.on('messageCreate', (message) => {
-	switch (message.content) {
-		case "!campusid" : message.reply("C\'est ça le pb");break;		
-	}
-})
+module.exports = (bot) => {
+	bot.on('messageCreate', (message) => {
+		switch (message.content) {
+			case "!campusid":
+				message.reply("C\'est ça le pb");
+				break;
+		}
+	})
+};
 
 bot.login(process.env.TOKEN);
