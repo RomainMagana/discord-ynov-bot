@@ -88,7 +88,8 @@ const embed = new MessageEmbed()
 		"<:jeuxvideo:895797291221418005> : Jeux vidéos & Animation\n\n" +
 		"<:audiovisuel:895797291426934784> : Audiovisuel \n\n" +
 		"<:designmanagement:895797291221409813> : Marketing \n\n" +
-		"<:marketing:895797291460468736> : Design & Management\n\n\n");
+		"<:marketing:895797291460468736> : Design & Management\n\n" +
+		"<:designmarketing:897057354342862849> : WebManagement\n\n\n");
 
 
 bot.on('ready', () => {
