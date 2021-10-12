@@ -327,5 +327,4 @@ bot.on('messageCreate', (message) => {
 	}
 });
 
-// bot.login(process.env.TOKEN);
-bot.login("ODk3NDk5NDkwNjQxMTI1Mzg3.YWWjiQ.d4YT0csVKEq69IqRkmp07z6QZLs");
+bot.login(process.env.TOKEN);
