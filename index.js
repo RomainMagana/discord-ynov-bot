@@ -296,14 +296,31 @@ bot.on('messageCreate', async (message) => {
 	}
 });
 
-module.exports = (bot) => {
-	bot.on('messageCreate', (message) => {
-		switch (message.content) {
-			case "!campusid":
-				message.reply("C\'est ça le pb");
-				break;
-		}
-	})
-};
+bot.on('messageCreate', (message) => {
+	switch (message.content) {
+		case "!campusid":
+			message.channel.send("C\'est ça le pb");
+			break;
+	}
+});
+
+bot.on('messageCreate', (message) => {
+	if (message.author.bot) return;
+
+	if (message.content === "!embed") {
+		console.log("pipi")
+		const embed = new MessageEmbed()
+			.setTitle("**Organisation de tournois**")
+			.setColor("#0099ff")
+			.setAuthor("Ynov Bot", "http://romain.magana.free.fr/Ynov.gif")
+			.setDescription("test")
+		message.channel.send({embeds : [embed]}).then(embedMessage => {
+			embedMessage.react("<:LeagueOfLegends:897486394400837633> ");
+			embedMessage.react("<:Valorant:897486615121907782> ");
+			embedMessage.react("<:HearthStone:897487547675070476>");
+			embedMessage.react("<:Autre:897495356227584113>");
+		});
+	}
+});
 
 bot.login(process.env.TOKEN);
