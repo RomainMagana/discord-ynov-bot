@@ -312,7 +312,6 @@ bot.on('messageCreate', (message) => {
 });
 
 bot.on('messageCreate', (message) => {
-
 	if (message.author.bot) return;
 
 	if (message.content === "!embed2") {
@@ -320,7 +319,6 @@ bot.on('messageCreate', (message) => {
 			.setTitle("-------------- ORGANISATION DE TOURNOIS --------------")
 			.setColor("#30E3CA")
 			.setAuthor("YnovBot")
-			//.setAuthor("YnovBot", "https://media-exp1.licdn.com/dms/image/C4D0BAQGdnt60vH7Yig/company-logo_200_200/0/1623666565772?e=1642032000&v=beta&t=hSpW2wo9uylVL4IfDpXRFxlTl6z1SGEVL5yLGJ2aoUA")
 			//.setImage("http://romain.magana.free.fr/Ynov.gif")
 			.setThumbnail("http://romain.magana.free.fr/Ynov.gif")
 			.setDescription("Bonjour,\n Afin de réaliser des tournois veuillez sélectionner vos centres d'intérêt.\n\n Toute proposition sera la bienvenue !")
