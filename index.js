@@ -307,13 +307,17 @@ bot.on('messageCreate', (message) => {
 bot.on('messageCreate', (message) => {
 	if (message.author.bot) return;
 
-	if (message.content === "!embed") {
+	if (message.content === "!embed2") {
 		console.log("pipi")
 		const embed = new MessageEmbed()
-			.setTitle("**Organisation de tournois**")
-			.setColor("#0099ff")
-			.setAuthor("Ynov Bot", "http://romain.magana.free.fr/Ynov.gif")
-			.setDescription("test")
+			.setTitle("-------------- ORGANISATION DE TOURNOIS --------------")
+			.setColor("#30E3CA")
+			.setAuthor("YnovBot")
+			//.setAuthor("YnovBot", "https://media-exp1.licdn.com/dms/image/C4D0BAQGdnt60vH7Yig/company-logo_200_200/0/1623666565772?e=1642032000&v=beta&t=hSpW2wo9uylVL4IfDpXRFxlTl6z1SGEVL5yLGJ2aoUA")
+			//.setImage("http://romain.magana.free.fr/Ynov.gif")
+			.setThumbnail("http://romain.magana.free.fr/Ynov.gif")
+			.setDescription("Bonjour,\n Veuillez sélectionner vos centres d'intérêt.\n\n Toute proposition sera la bienvenue !")
+			.setFooter("|"+"-".repeat(113)+"|")
 		message.channel.send({embeds : [embed]}).then(embedMessage => {
 			embedMessage.react("<:LeagueOfLegends:897486394400837633> ");
 			embedMessage.react("<:Valorant:897486615121907782> ");
@@ -323,4 +327,5 @@ bot.on('messageCreate', (message) => {
 	}
 });
 
-bot.login(process.env.TOKEN);
+// bot.login(process.env.TOKEN);
+bot.login("ODk3NDk5NDkwNjQxMTI1Mzg3.YWWjiQ.d4YT0csVKEq69IqRkmp07z6QZLs");
