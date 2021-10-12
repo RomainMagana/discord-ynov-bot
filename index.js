@@ -77,6 +77,13 @@ const B2webmanagment = "897056331167592468"
 
 const webmanagement = "897055860579242004"
 
+//Jeux
+const LeagueOfLegends = "897522089848889384"
+const Valorant = "897522396997746719"
+const Hearthstone = "897522482934853733"
+
+const Jeux = "897522642301636640"
+
 
 // Je créé mon embed, lui donne son titre, couleur, author, description
 const embed = new MessageEmbed()
@@ -305,10 +312,10 @@ bot.on('messageCreate', (message) => {
 });
 
 bot.on('messageCreate', (message) => {
+
 	if (message.author.bot) return;
 
 	if (message.content === "!embed2") {
-		console.log("pipi")
 		const embed = new MessageEmbed()
 			.setTitle("-------------- ORGANISATION DE TOURNOIS --------------")
 			.setColor("#30E3CA")
@@ -316,7 +323,7 @@ bot.on('messageCreate', (message) => {
 			//.setAuthor("YnovBot", "https://media-exp1.licdn.com/dms/image/C4D0BAQGdnt60vH7Yig/company-logo_200_200/0/1623666565772?e=1642032000&v=beta&t=hSpW2wo9uylVL4IfDpXRFxlTl6z1SGEVL5yLGJ2aoUA")
 			//.setImage("http://romain.magana.free.fr/Ynov.gif")
 			.setThumbnail("http://romain.magana.free.fr/Ynov.gif")
-			.setDescription("Bonjour,\n Veuillez sélectionner vos centres d'intérêt.\n\n Toute proposition sera la bienvenue !")
+			.setDescription("Bonjour,\n Afin de réaliser des tournois veuillez sélectionner vos centres d'intérêt.\n\n Toute proposition sera la bienvenue !")
 			.setFooter("|"+"-".repeat(113)+"|")
 		message.channel.send({embeds : [embed]}).then(embedMessage => {
 			embedMessage.react("<:LeagueOfLegends:897486394400837633> ");
@@ -324,6 +331,31 @@ bot.on('messageCreate', (message) => {
 			embedMessage.react("<:HearthStone:897487547675070476>");
 			embedMessage.react("<:Autre:897495356227584113>");
 		});
+	}
+});
+
+
+bot.on('messageReactionAdd', (reaction,user) => {
+	if(user.bot) return;
+	if(reaction.message.channelId === "897213325010673675") {
+		switch (reaction.emoji.name) {
+			case "LeagueOfLegends" : reaction.message.guild.members.cache.get(user.id).roles.add(LeagueOfLegends);break;
+			case "Valorant" : reaction.message.guild.members.cache.get(user.id).roles.add(Valorant);break;
+			case "HearthStone" : reaction.message.guild.members.cache.get(user.id).roles.add(Hearthstone);break;
+			case "Autre" : reaction.message.guild.members.cache.get(user.id).roles.add(Jeux);break;
+		}
+	}
+});
+
+bot.on('messageReactionRemove', (reaction,user) => {
+	if(user.bot) return;
+	if(reaction.message.channelId === "897213325010673675") {
+		switch (reaction.emoji.name) {
+			case "LeagueOfLegends" : reaction.message.guild.members.cache.get(user.id).roles.remove(LeagueOfLegends);break;
+			case "Valorant" : reaction.message.guild.members.cache.get(user.id).roles.remove(Valorant);break;
+			case "HearthStone" : reaction.message.guild.members.cache.get(user.id).roles.remove(Hearthstone);break;
+			case "Autre" : reaction.message.guild.members.cache.get(user.id).roles.remove(Jeux);break;
+		}
 	}
 });
 
