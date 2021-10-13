@@ -81,8 +81,8 @@ const webmanagement = "897055860579242004"
 const LeagueOfLegends = "897522089848889384"
 const Valorant = "897522396997746719"
 const Hearthstone = "897522482934853733"
-
 const Jeux = "897522642301636640"
+const Overwatch = "897748707984961587"
 
 
 // Je créé mon embed, lui donne son titre, couleur, author, description
@@ -335,24 +335,26 @@ bot.on('messageCreate', (message) => {
 
 bot.on('messageReactionAdd', (reaction,user) => {
 	if(user.bot) return;
-	if(reaction.message.channelId === "897213325010673675") {
+	if(reaction.message.id === "897538321801150505") {
 		switch (reaction.emoji.name) {
-			case "LeagueOfLegends" : reaction.message.guild.members.cache.get(user.id).roles.add(LeagueOfLegends);break;
-			case "Valorant" : reaction.message.guild.members.cache.get(user.id).roles.add(Valorant);break;
-			case "HearthStone" : reaction.message.guild.members.cache.get(user.id).roles.add(Hearthstone);break;
+			case "LeagueOfLegends" : reaction.message.guild.members.cache.get(user.id).roles.add(LeagueOfLegends,Jeux);break;
+			case "Valorant" : reaction.message.guild.members.cache.get(user.id).roles.add(Valorant,Jeux);break;
+			case "HearthStone" : reaction.message.guild.members.cache.get(user.id).roles.add(Hearthstone,Jeux);break;
 			case "Autre" : reaction.message.guild.members.cache.get(user.id).roles.add(Jeux);break;
+			case "Overwatch" : reaction.message.guild.members.cache.get(user.id).roles.add(Overwatch);break;
 		}
 	}
 });
 
 bot.on('messageReactionRemove', (reaction,user) => {
 	if(user.bot) return;
-	if(reaction.message.channelId === "897213325010673675") {
+	if(reaction.message.id === "897538321801150505") {
 		switch (reaction.emoji.name) {
-			case "LeagueOfLegends" : reaction.message.guild.members.cache.get(user.id).roles.remove(LeagueOfLegends);break;
-			case "Valorant" : reaction.message.guild.members.cache.get(user.id).roles.remove(Valorant);break;
-			case "HearthStone" : reaction.message.guild.members.cache.get(user.id).roles.remove(Hearthstone);break;
+			case "LeagueOfLegends" : reaction.message.guild.members.cache.get(user.id).roles.remove(LeagueOfLegends,Jeux);break;
+			case "Valorant" : reaction.message.guild.members.cache.get(user.id).roles.remove(Valorant,Jeux);break;
+			case "HearthStone" : reaction.message.guild.members.cache.get(user.id).roles.remove(Hearthstone,Jeux);break;
 			case "Autre" : reaction.message.guild.members.cache.get(user.id).roles.remove(Jeux);break;
+			case "Overwatch" : reaction.message.guild.members.cache.get(user.id).roles.remove(Overwatch);break;
 		}
 	}
 });
