@@ -1,4 +1,4 @@
-# discord-ynov-bot
+# DISCORD BOT YNOV
 Bot Discord ayant pour tache faciliter le travail du BDE de Sophia Ynov Campus
 
 ## MISSION
